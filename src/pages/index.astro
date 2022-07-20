@@ -1,95 +1,81 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Card from "../components/Card.astro";
+import TimeDate from "../components/TimeDate.svelte";
 ---
 
-<Layout title="Welcome to Astro.">
-  <main>
-    <h1>Welcome to <span class="text-gradient">Astro</span></h1>
-    <p class="instructions">
-      Check out the <code>src/pages</code> directory to get started.<br />
-      <strong>Code Challenge:</strong> Tweak the "Welcome to Astro" message above.
-    </p>
-    <ul role="list" class="link-card-grid">
-      <Card
-        href="https://docs.astro.build/"
-        title="Documentation"
-        body="Learn how Astro works and explore the official API docs."
-      />
-      <Card
-        href="https://astro.build/integrations/"
-        title="Integrations"
-        body="Supercharge your project with new frameworks and libraries."
-      />
-      <Card
-        href="https://astro.build/themes/"
-        title="Themes"
-        body="Explore a galaxy of community-built starter themes."
-      />
-      <Card
-        href="https://astro.build/chat/"
-        title="Chat"
-        body="Come say hi to our amazing Discord community. ❤️"
-      />
-    </ul>
-  </main>
-</Layout>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, height=device-height, initial-scale=1.0"
+    />
+    <meta name="description" content="Ben Buzard's Portfolio Website" />
+    <title>Personal Website</title>
+  </head>
+  <body
+    style="background-image: url('macos-backgrounds/macOS-Ventura-Dark.webp');"
+    class="bg-center"
+  >
+    <div
+      class="w-screen h-screen grid"
+      style="grid-template-rows: 1.75rem 1fr;"
+    >
+      <div
+        class="bg-black w-screen h-7 bg-opacity-50 grid grid-cols-3 px-4"
+        style="backdrop-filter: blur(10rem);"
+      >
+        <div class="flex justify-start items-center"></div>
+        <div class="flex justify-center items-center"></div>
+        <div
+          class="flex justify-end items-center text-white text-sm"
+          style="font-family: 'Quicksand', sand-serif;"
+        >
+          <TimeDate client:load />
+        </div>
+      </div>
 
-<style>
-  :root {
-    --astro-gradient: linear-gradient(0deg, #4f39fa, #da62c4);
-  }
-
-  h1 {
-    margin: 2rem 0;
-  }
-
-  main {
-    margin: auto;
-    padding: 1em;
-    max-width: 60ch;
-  }
-
-  .text-gradient {
-    font-weight: 900;
-    background-image: var(--astro-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-size: 100% 200%;
-    background-position-y: 100%;
-    border-radius: 0.4rem;
-    animation: pulse 4s ease-in-out infinite;
-  }
-
-  @keyframes pulse {
-    0%,
-    100% {
-      background-position-y: 0%;
-    }
-    50% {
-      background-position-y: 80%;
-    }
-  }
-
-  .instructions {
-    line-height: 1.6;
-    margin: 1rem 0;
-    background: #4f39fa;
-    padding: 1rem;
-    border-radius: 0.4rem;
-    color: var(--color-bg);
-  }
-
-  .instructions code {
-    font-size: 0.875em;
-    border: 0.1em solid var(--color-border);
-    border-radius: 4px;
-    padding: 0.15em 0.25em;
-  }
-  .link-card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
-    gap: 1rem;
-    padding: 0;
-  }
-</style>
+      <div class="flex justify-center content-center w-screen">
+        <div
+          class="bg-zinc-800 md:container mx-16 my-24 px-8 py-8 rounded-3xl grid grid-cols-3 gap-y-4 drop-shadow-lg text-white"
+          style="grid-auto-rows: min-content;"
+        >
+          <div
+            id="window-buttons"
+            class="relative flex gap-3"
+            style="grid-column: 1; grid-row: 1;"
+          >
+            <div
+              id="window-button-close"
+              class="rounded-full bg-red-600 hover:bg-red-500 w-6 h-6"
+              onclick="window.close()"
+            >
+            </div>
+            <div
+              id="window-button-minimize"
+              class="rounded-full bg-yellow-600 hover:bg-yellow-500 w-6 h-6"
+            >
+            </div>
+            <div
+              id="window-button-maximize"
+              class="rounded-full bg-green-600 hover:bg-green-500 w-6 h-6"
+              onclick="if (document.fullscreenElement) { document.exitFullscreen() } else { document.documentElement.requestFullscreen() }"
+            >
+            </div>
+          </div>
+          <div
+            class="text-4xl flex justify-center"
+            style="grid-column: 2; grid-row: 1; font-family: 'Quicksand', sans-serif;"
+          >
+            Portfolio
+          </div>
+          <div class="" style="grid-column: 1; grid-row: 2;">Text</div>
+        </div>
+      </div>
+    </div>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Quicksand&display=swap");
+    </style>
+  </body>
+</html>
