@@ -40,5 +40,8 @@
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "engines": {
+    "node": "18.6.0"
+  }
 }
